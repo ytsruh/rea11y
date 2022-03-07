@@ -4,8 +4,8 @@
       <div class="px-8 col-span-2 lg:col-span-1 mx-0 sm:mx-10 lg:mx-0 place-self-center">
         <h6
           class="
-            uppercase
             underline
+            uppercase
             mb-4
             flex
             items-center
@@ -13,11 +13,11 @@
             dark:text-primary
           "
         >
-          Tailwind ELEMENTS
+          About
         </h6>
         <p>
-          Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit.
+          We aim to be a single source of accessibility information combined with accessibility project
+          management software.
         </p>
       </div>
       <div class="px-8 col-span-1">
