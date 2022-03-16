@@ -1,0 +1,10 @@
+{
+  "name": "rea11y-functions",
+  "description": "Azure Functions for Re-a11y",
+  "scripts": {
+    "start": "func start --verbose"
+  },
+  "dependencies": {
+    "pa11y": "^6.1.1"
+  }
+}

@@ -6,7 +6,7 @@
   <title>About Us | Re-a11y</title>
   <meta
     name="description"
-    content="Accessibility is complicated. This is our attempt to make it easier. We try to answer some of the most common question about accessibility and how to design great & inclusive digital experiences."
+    content="Reactive applications & accessibility are the inspirations behind this website. Find out more about our origins."
   />
 </svelte:head>
 
