@@ -8,7 +8,7 @@
 
   function toggleDarkMode() {
     dark = !dark;
-    console.log("Dark mode: " + dark);
+    //console.log("Dark mode: " + dark);
     document.documentElement.classList.toggle("dark");
   }
   function toggleMenu() {
@@ -25,7 +25,7 @@
 <div>
   <nav class="flex justify-around lg:px-10 px-5 py-3 bg-primary dark:bg-darkGrey text-white">
     <div class="basis-2/12">
-      <Logo />
+      <a href="/"><Logo /></a>
     </div>
     <div class="grow flex justify-center">
       {#each links as link}
@@ -54,7 +54,7 @@
     </div>
   </nav>
   {#if menuOpen === true}
-    <div class="bg-primary dark:bg-neutral-800 text-white">
+    <div class="bg-primary dark:bg-neutral-800 text-white md:hidden">
       <ul class="text-center py-3">
         {#each links as link}
           <li class="text-xl my-2">

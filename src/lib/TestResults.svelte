@@ -1,6 +1,5 @@
 <script>
   export let results = undefined;
-  console.log(results);
 </script>
 
 <div class="container mx-auto py-5">

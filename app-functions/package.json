@@ -2,9 +2,11 @@
   "name": "rea11y-functions",
   "description": "Azure Functions for Re-a11y",
   "scripts": {
-    "start": "func start --verbose"
+    "start": "func start --verbose",
+    "deploy": "func azure functionapp publish re-a11y-api --build remote"
   },
   "dependencies": {
-    "pa11y": "^6.1.1"
+    "pa11y": "^6.1.1",
+    "puppeteer": "^13.5.1"
   }
 }

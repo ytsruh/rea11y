@@ -1,5 +1,4 @@
 <script>
-  import IoIosConstruct from "svelte-icons/io/IoIosConstruct.svelte";
   import IoIosMan from "svelte-icons/io/IoIosMan.svelte";
   import IoMdClipboard from "svelte-icons/io/IoMdClipboard.svelte";
   import IoIosPhonePortrait from "svelte-icons/io/IoIosPhonePortrait.svelte";
@@ -20,14 +19,10 @@
       This is about making things accessible to all people, whether they have a disability or not.
     </p>
     <div class="my-10">
-      <h2 class="text-3xl text-center my-5">Run quick test</h2>
-      <div class="flex grow border-2 rounded-md border-white">
-        <button class="flex items-center justify-center px-4 bg-primary text-white">
-          <div class="search-icon inline-flex mx-2 ">
-            <IoIosConstruct />
-          </div>
-        </button>
-        <input type="text" class="px-4 py-2 w-full dark:bg-coal" placeholder="Enter url..." />
+      <div class="flex justify-center">
+        <a href="/quicktest" class="bg-coal dark:bg-primary text-white rounded-md px-10 py-3">
+          Run Quick Test
+        </a>
       </div>
     </div>
   </div>
@@ -113,11 +108,6 @@
 </section>
 
 <style>
-  .search-icon {
-    width: 32px;
-    height: 32px;
-  }
-
   .icon {
     width: 128px;
     height: 128px;
