@@ -2,6 +2,7 @@
   import Loading from "$lib/Loading.svelte";
   import IoIosConstruct from "svelte-icons/io/IoIosConstruct.svelte";
   import TestResults from "$lib/TestResults.svelte";
+  const apiURL = import.meta.env.VITE_API_URL; //import env variable from VITE
   let testUrl;
   let loading = false;
   let error = false;
@@ -12,7 +13,7 @@
       results = false;
       error = false;
       loading = true;
-      const res = await fetch("http://localhost:7071/api/quickTest", {
+      const res = await fetch(`${apiURL}/api/quickTest`, {
         method: "POST",
         body: JSON.stringify({
           url: testUrl,
@@ -53,15 +54,15 @@
         </button>
         <input
           type="text"
-          class="px-4 py-2 w-full text-coal dark:text-white dark:bg-coal "
+          class="px-4 py-2 w-full text-coal dark:text-white dark:bg-coal"
           placeholder="Enter url..."
           bind:value={testUrl}
         />
       </div>
       <div class="flex py-5 justify-center">
         <button class="bg-coal dark:bg-primary text-white rounded-md px-5 py-3" on:click={runTest}
-          >Run Test</button
-        >
+          >Run Test
+        </button>
       </div>
     </div>
   </div>

@@ -16,5 +16,11 @@
     "title": "What types of accessibility issues are there?",
     "content": "There are many issues and barriers to accessibility. However the most common ones include; Visual (e.g., color blindness), Motor/mobility (e.g., wheelchair-user concerns), Auditory (hearing difficulties), Seizures (especially photosensitive epilepsy), Learning/cognitive (e.g., dyslexia). This list is not exclusive.",
     "active": false
+  },
+  {
+    "id": 4,
+    "title": "Where can I find out more about the standards you test against?",
+    "content": "You can find out more on this link: https://www.w3.org/TR/WCAG21 ",
+    "active": false
   }
 ]
