@@ -1,5 +1,6 @@
 {
   "version": "2.0.0",
+  "command": "npm",
   "tasks": [
     {
       "type": "func",
@@ -9,6 +10,12 @@
       "options": {
         "cwd": "${workspaceFolder}/app-functions"
       }
+    },
+    {
+      "label": "install",
+      "type": "shell",
+      "args": ["install"],
+      "problemMatcher": []
     }
   ]
 }

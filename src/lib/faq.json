@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "What is accessability?",
+    "content": "Web accessibility, or eAccessibility, is the inclusive practice of ensuring there are no barriers that prevent interaction with, or access to, websites on the World Wide Web by people with physical disabilities, situational disabilities, and socio-economic restrictions on bandwidth and speed.",
+    "active": true
+  },
+  {
+    "id": 2,
+    "title": "What is WCAG??",
+    "content": "WCAG stands for Web Content Accessibility Guidelines and is an international standard. Web Content Accessibility Guidelines (WCAG) 2 is developed through the W3C process in cooperation with individuals and organizations around the world, with a goal of providing a single shared standard for web content accessibility that meets the needs of individuals, organizations, and governments internationally.",
+    "active": false
+  },
+  {
+    "id": 3,
+    "title": "What types of accessibility issues are there?",
+    "content": "There are many issues and barriers to accessibility. However the most common ones include; Visual (e.g., color blindness), Motor/mobility (e.g., wheelchair-user concerns), Auditory (hearing difficulties), Seizures (especially photosensitive epilepsy), Learning/cognitive (e.g., dyslexia). This list is not exclusive.",
+    "active": false
+  },
+  {
+    "id": 4,
+    "title": "Where can I find out more about the standards you test against?",
+    "content": "You can find out more on this link: https://www.w3.org/TR/WCAG21 ",
+    "active": false
+  }
+]
