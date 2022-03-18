@@ -9,9 +9,10 @@ module.exports = {
         warning: "#9064cd",
         info: "#00d0d4",
         danger: "#ff5000",
-        lightGrey: "#d4d4d4",
+        lightGrey: "#f9fafb",
         midGrey: "#737373",
         darkGrey: "#262626",
+        darkbg: "#171717",
         coal: "#404040",
       },
       fontFamily: {
