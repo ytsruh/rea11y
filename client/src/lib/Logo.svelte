@@ -6,7 +6,7 @@
   <div class="icon inline-flex mx-2">
     <IoIosContacts />
   </div>
-  <h1 class="inline-flex text-3xl"><span class="dark:text-white">Re-</span>a11y</h1>
+  <h1 class="inline-flex text-3xl"><span class="dark:text-white">Re</span>a11y</h1>
 </div>
 
 <style>

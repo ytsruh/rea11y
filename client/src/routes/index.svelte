@@ -14,7 +14,7 @@
 
 <section class="flex justify-center bg-primary dark:bg-neutral-900 text-white">
   <div class="basis-9/12 lg:basis-6/12 my-10">
-    <h1 class="text-5xl my-5">Welcome to Re-a11y</h1>
+    <h1 class="text-5xl my-5">Welcome to Rea11y</h1>
     <p class="text-xl my-3">
       This is about making things accessible to all people, whether they have a disability or not.
     </p>
