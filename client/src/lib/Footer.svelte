@@ -54,6 +54,6 @@
   </div>
   <div class="text-center p-6 dark:text-primary">
     <span>© 2021 Copyright:</span>
-    <a class="" href="/">Re-a11y</a>
+    <a class="" href="/">Rea11y</a>
   </div>
 </footer>
