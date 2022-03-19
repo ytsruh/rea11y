@@ -1,4 +1,4 @@
-# Re-a11y
+# Rea11y
 
 The accessibility testing and project management application.
 
