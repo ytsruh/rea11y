@@ -1,4 +1,4 @@
-<footer class="text-center bg-primary text-white dark:bg-darkbg">
+<footer class="text-center bg-primary text-white dark:bg-coal">
   <div class="mx-6 py-10 text-center ">
     <div class="grid grid-cols-2 lg:grid-cols-3 gap-8 justify-space">
       <div class="px-8 col-span-2 lg:col-span-1 mx-0 sm:mx-10 lg:mx-0 place-self-center">
