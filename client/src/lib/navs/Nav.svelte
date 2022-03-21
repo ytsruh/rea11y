@@ -1,5 +1,5 @@
 <script>
-  import Logo from "./Logo.svelte";
+  import Logo from "../Logo.svelte";
   import IoIosSunny from "svelte-icons/io/IoIosSunny.svelte";
   import IoIosMoon from "svelte-icons/io/IoIosMoon.svelte";
   import IoIosMenu from "svelte-icons/io/IoIosMenu.svelte";
@@ -8,7 +8,6 @@
 
   function toggleDarkMode() {
     dark = !dark;
-    //console.log("Dark mode: " + dark);
     document.documentElement.classList.toggle("dark");
   }
   function toggleMenu() {
@@ -24,7 +23,7 @@
 </script>
 
 <div>
-  <nav class="flex justify-around lg:px-10 px-5 py-3 bg-primary dark:bg-darkGrey text-white">
+  <nav class="flex justify-around lg:px-10 px-5 py-3 bg-primary dark:bg-coal text-white">
     <div class="basis-2/12">
       <a href="/"><Logo /></a>
     </div>
@@ -53,7 +52,7 @@
     </div>
   </nav>
   {#if menuOpen === true}
-    <div class="bg-primary dark:bg-neutral-800 text-white md:hidden">
+    <div class="bg-primary dark:bg-coal text-white md:hidden">
       <ul class="text-center py-3">
         {#each links as link}
           <li class="text-lg my-2">
