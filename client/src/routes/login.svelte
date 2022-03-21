@@ -65,7 +65,6 @@
   <div class="grid place-items-center pt-28">
     {#if submitting}
       <div class="w-100 md:w-1/2 py-5">
-        <h1 class="text-center py-5 text-5xl text-white bg-primary dark:bg-coal">Login</h1>
         <Loading />
       </div>
     {:else}

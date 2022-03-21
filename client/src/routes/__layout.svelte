@@ -1,6 +1,6 @@
 <script>
   import "../index.css";
-  import Nav from "$lib/Nav.svelte";
+  import Nav from "$lib/navs/Nav.svelte";
   import Footer from "$lib/Footer.svelte";
 </script>
 
