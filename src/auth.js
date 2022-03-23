@@ -32,7 +32,6 @@ router.post("/create", async (req, res) => {
 
 //Log user in and return JWT
 router.post("/login", async (req, res) => {
-  console.log(req.body);
   try {
     //find user & validate password
     const user = await User.findOne({ email: req.body.username });
