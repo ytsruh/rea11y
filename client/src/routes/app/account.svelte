@@ -1,11 +1,10 @@
 <script>
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
-  import { alert } from "$lib/stores/alert";
+  import { get, put } from "$lib/api.svelte";
   import PageHeader from "$lib/PageHeader.svelte";
   import Loading from "$lib/Loading.svelte";
-  const user = JSON.parse(sessionStorage.getItem("user"));
-  const url = `${import.meta.env.VITE_BASE_URL}/account`;
+  import Button from "$lib/components/Button.svelte";
   let loading = true;
   let accountName = "";
   let name = "";
@@ -13,41 +12,24 @@
 
   async function handleSubmit() {
     try {
-      const res = await fetch(url, {
-        method: "PUT",
-        headers: {
-          Authorization: `token ${user.token}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          accountName,
-          name,
-          userName,
-        }),
+      await put("/account", {
+        accountName,
+        name,
+        userName,
       });
-      const data = await res.json();
-      alert.set({ variant: "bg-primary", message: "Account successfully updated" });
-      goto("/app");
     } catch (err) {
-      console.log(err);
-      alert.set({ variant: "bg-danger", message: "Something went wrong, please try again" });
       goto("/app");
     }
   }
 
   onMount(async () => {
     try {
-      const res = await fetch(url, {
-        headers: { Authorization: `token ${user.token}` },
-      });
-      const data = await res.json();
+      const data = await get("/account");
       accountName = data.body.accountName;
       userName = data.body.username;
       name = data.body.name;
       loading = false;
     } catch (err) {
-      console.log(err);
-      alert.set({ variant: "bg-danger", message: "Something went wrong, please try again" });
       goto("/app");
     }
   });
@@ -62,7 +44,7 @@
       <div class="bg-white dark:bg-coal px-10 py-5">
         <h2 class="text-center text-2xl py-5">Update details</h2>
         <form class="py-5" on:submit|preventDefault={handleSubmit}>
-          <div class="flex justify-center py-3">
+          <div class="flex justify-center py-1">
             <div class="mb-3 w-full">
               <label for="username" class="form-label inline-block mb-2 text-coal dark:text-white text-lg"
                 >Username</label
@@ -76,7 +58,7 @@
               />
             </div>
           </div>
-          <div class="flex justify-center py-3">
+          <div class="flex justify-center py-1">
             <div class="mb-3 w-full">
               <label for="name" class="form-label inline-block mb-2 text-coal dark:text-white text-lg"
                 >Name</label
@@ -90,7 +72,7 @@
               />
             </div>
           </div>
-          <div class="flex justify-center py-3">
+          <div class="flex justify-center py-1">
             <div class="mb-3 w-full">
               <label for="username" class="form-label inline-block mb-2 text-coal dark:text-white text-lg"
                 >Account Name</label
@@ -105,14 +87,21 @@
             </div>
           </div>
           <div class="flex">
-            <button
-              type="submit"
-              class="inline-block px-6 py-2.5 bg-coal dark:bg-primary text-white uppercase rounded"
-            >
-              Update
-            </button>
+            <button type="submit" class="inline-block px-6 py-2.5 bg-primary text-white"> Update </button>
           </div>
         </form>
+      </div>
+      <div class="bg-white dark:bg-coal px-10 py-5 text-center grid">
+        <div class="self-center">
+          <img
+            src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+            class="rounded-full w-32 h-32 mb-4 mx-auto"
+            alt="Avatar"
+          />
+          <div class="py-5">
+            <Button class="bg-primary text-white ">Update Avatar</Button>
+          </div>
+        </div>
       </div>
     </div>
   {/if}

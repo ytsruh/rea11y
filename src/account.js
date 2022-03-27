@@ -13,10 +13,10 @@ router.get("/", async (req, res) => {
       name: user.name,
       accountName: account.name,
     };
-    res.json({ message: "Success", body: data });
+    res.status(200).json({ message: "Success", body: data });
   } catch (err) {
     console.log(err);
-    res.json({ error: "An Error Occured" });
+    res.status(500).json({ error: "An Error Occured" });
   }
 });
 
@@ -25,10 +25,10 @@ router.put("/", async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.user._id, { name: req.body.name });
     const account = await Account.findByIdAndUpdate(req.user.account, { name: req.body.accountName });
-    res.json({ message: "Success" });
+    res.status(200).json({ message: "Success" });
   } catch (err) {
     console.log(err);
-    res.json({ error: "An Error Occured" });
+    res.status(500).json({ error: "An Error Occured" });
   }
 });
 

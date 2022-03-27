@@ -1,7 +1,7 @@
 <script>
   import { goto } from "$app/navigation";
   import { alert } from "$lib/stores/alert";
-  import Alert from "$lib/Alert.svelte";
+  import Alert from "$lib/components/Alert.svelte";
   import Loading from "$lib/Loading.svelte";
   let accountName = "";
   let name = "";

@@ -2,7 +2,7 @@
   import { user } from "$lib/stores/auth";
   import { onMount, afterUpdate } from "svelte";
   import { goto } from "$app/navigation";
-  import Alert from "$lib/Alert.svelte";
+  import Alert from "$lib/components/Alert.svelte";
   import AppNav from "$lib/navs/AppNav.svelte";
   import AppSidebar from "$lib/navs/AppSidebar.svelte";
 
@@ -33,9 +33,9 @@
     <AppNav toggle={toggleSidebar} />
     <div class="flex flex-row min-h-screen">
       <AppSidebar />
-      <div class="grow">
-        <Alert />
-        <div class="bg-slate-100 text-coal dark:bg-darkGrey dark:text-white p-5 h-full">
+      <div class="grow bg-slate-100 text-coal dark:bg-darkGrey dark:text-white">
+        <div class="m-1"><Alert /></div>
+        <div class="p-5">
           <slot />
         </div>
       </div>

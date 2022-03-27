@@ -14,6 +14,8 @@ if (process.env.AUTH !== "false") {
 //Import and use authenticated routes
 const account = require("./account");
 router.use("/account", account);
+const tests = require("./test");
+router.use("/test", tests);
 router.get("/", (req, res) => {
   res.json({
     message: "Welcome Rea11y",

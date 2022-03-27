@@ -2,7 +2,7 @@
   import { goto } from "$app/navigation";
   import { user } from "$lib/stores/auth";
   import { alert } from "$lib/stores/alert";
-  import Alert from "$lib/Alert.svelte";
+  import Alert from "$lib/components/Alert.svelte";
   import Loading from "$lib/Loading.svelte";
   let username = "";
   let password = "";

@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const User = require("./models/User");
 const Account = require("./models/Account");
+const Test = require("./models/Test");
 
 const connect = async () => {
   try {
@@ -19,4 +20,5 @@ module.exports = {
   connect,
   User,
   Account,
+  Test,
 };
