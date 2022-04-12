@@ -5,6 +5,13 @@ const config = {
 };
 
 module.exports = async function (context, req) {
+  console.log(req.query.key);
+  if (!req.query.key || req.query.key !== "mUxo4Cy") {
+    context.res = {
+      status: 401,
+      body: "Unauthorised: You do not have permission to access this service.",
+    };
+  }
   try {
     const results = await pa11y(req.body.url, config);
     console.log(results);

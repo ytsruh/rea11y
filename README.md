@@ -12,6 +12,8 @@ The accessibility testing and project management application.
 ### 0.1.1
 
 - Added Login & Register functionality
+- Added Account Update functionality
+- Added Test functionality
 
 ### 0.1.0
 

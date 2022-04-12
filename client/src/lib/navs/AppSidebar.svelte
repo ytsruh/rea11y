@@ -25,7 +25,10 @@
     <ul>
       {#each links as link}
         <li class="w-full">
-          <a href={link.link} class="inline-flex my-1 p-3 hover:bg-primary hover:text-white w-full">
+          <a
+            href={link.link}
+            class="inline-flex my-1 p-3 hover:bg-primary hover:text-white w-full rounded-md"
+          >
             <div class="icon px-1 inline-flex">
               <svelte:component this={link.icon} />
             </div>

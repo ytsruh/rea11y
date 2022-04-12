@@ -1,14 +1,14 @@
 <script>
   import Button from "$lib/components/Button.svelte";
   export let header = null;
-  export let img = "https://via.placeholder.com/150?text=Rea11y";
+  export let img = "https://via.placeholder.com/150";
   export let title = null;
   export let link = null;
   export let footer = null;
 </script>
 
 <div class="flex justify-center">
-  <div class="block shadow-lg bg-white dark:bg-coal max-w-sm text-center">
+  <div class="block shadow-lg bg-white dark:bg-coal max-w-sm text-center rounded-md">
     <div class="py-3 px-6">{header}</div>
     <img class="object-cover h-48 w-96" src={img} alt={title} />
     <div class="p-6">

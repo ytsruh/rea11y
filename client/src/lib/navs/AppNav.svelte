@@ -3,7 +3,8 @@
   import IoIosSunny from "svelte-icons/io/IoIosSunny.svelte";
   import IoIosMoon from "svelte-icons/io/IoIosMoon.svelte";
   import IoIosMenu from "svelte-icons/io/IoIosMenu.svelte";
-  import IoIosSearch from "svelte-icons/io/IoIosSearch.svelte";
+  import CommandPallette from "$lib/components/CommandPalette.svelte";
+  import AvatarDropdown from "./AvatarDropdown.svelte";
   export let toggle;
   export let dark = false;
 
@@ -26,9 +27,7 @@
   <div>
     <ul class="flex">
       <li class="mx-2">
-        <div class="icon p-1">
-          <IoIosSearch />
-        </div>
+        <CommandPallette />
       </li>
       <li class="mx-2">
         <div class="icon p-1" on:click={() => toggleDarkMode()}>
@@ -40,11 +39,7 @@
         </div>
       </li>
       <li class="mx-2">
-        <img
-          class="inline object-cover w-8 h-8 mr-2 rounded-full"
-          src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-          alt="Profile"
-        />
+        <AvatarDropdown />
       </li>
     </ul>
   </div>

@@ -2,7 +2,6 @@
   import { onMount } from "svelte";
   import { get } from "$lib/api.svelte";
   import { goto } from "$app/navigation";
-  import PageHeader from "$lib/PageHeader.svelte";
   import CreateTest from "$lib/tests/CreateTest.svelte";
   import Loading from "$lib/Loading.svelte";
   import ImgCard from "$lib/components/ImgCard.svelte";
@@ -20,7 +19,6 @@
 </script>
 
 <div>
-  <PageHeader>Page Tests</PageHeader>
   <CreateTest />
   {#if data}
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2 2xl:grid-cols-4 gap-4">
@@ -34,6 +32,6 @@
       {/each}
     </div>
   {:else}
-    <div class="py-10"><Loading /></div>
+    <div class="my-10"><Loading /></div>
   {/if}
 </div>

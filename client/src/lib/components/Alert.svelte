@@ -22,7 +22,7 @@
 </script>
 
 {#if visible}
-  <div class={`${$alert.variant} relative py-3 pl-4 pr-10 text-white`} role="alert">
+  <div class={`${$alert.variant} relative py-3 pl-4 pr-10 text-white rounded-md`} role="alert">
     <p>{$alert.message}</p>
     <span class="absolute inset-y-0 right-0 flex items-center mr-4" on:click={() => (visible = false)}>
       <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20"
