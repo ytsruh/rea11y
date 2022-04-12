@@ -1,6 +1,6 @@
 <script>
   export let link = null;
-  let clazz;
+  let clazz = null;
   export { clazz as class };
 </script>
 

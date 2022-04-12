@@ -1,13 +1,14 @@
 <script>
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
-  import { get, put } from "$lib/api.svelte";
+  import { get, put, upload } from "$lib/api.svelte";
   import Loading from "$lib/Loading.svelte";
   import Button from "$lib/components/Button.svelte";
   let loading = true;
   let accountName = "";
   let name = "";
   let userName = "";
+  let imgFile;
 
   async function handleSubmit() {
     try {
@@ -18,6 +19,19 @@
       });
     } catch (err) {
       goto("/app");
+    }
+  }
+
+  async function uploadImage() {
+    try {
+      if (imgFile && imgFile[0]) {
+        loading = true;
+        const formData = new FormData();
+        formData.append("imgFile", imgFile[0]);
+        upload("/account/profile", formData);
+      }
+    } catch (err) {
+      console.log(err);
     }
   }
 
@@ -90,17 +104,37 @@
         </form>
       </div>
       <div class="bg-white dark:bg-coal px-10 py-5 text-center grid">
-        <div class="self-center">
-          <img
-            src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-            class="rounded-full w-32 h-32 mb-4 mx-auto"
-            alt="Avatar"
-          />
-          <div class="py-5">
-            <Button class="bg-primary text-white">Update Avatar</Button>
+        <div class="upload-btn-wrapper self-center">
+          <div class="py-3">
+            <img
+              src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+              class="rounded-full w-32 h-32 mb-4 mx-auto"
+              alt="Avatar"
+            />
+            <input type="file" name="imageFile" bind:files={imgFile} />
+          </div>
+          {#if imgFile}
+            awaiting upload
+          {/if}
+          <div class="py-3">
+            <Button on:click={uploadImage}>Upload image</Button>
           </div>
         </div>
       </div>
     </div>
   {/if}
 </div>
+
+<style>
+  .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+  .upload-btn-wrapper input[type="file"] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+</style>

@@ -61,4 +61,42 @@
       goto("/app");
     }
   }
+
+  export async function upload(endpoint, data) {
+    const url = baseURL + endpoint;
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          Authorization: `token ${user.token}`,
+        },
+        body: data,
+      });
+      await res.json();
+      alert.set({ variant: "bg-primary", message: "Successfully uploaded & updated" });
+      goto("/app");
+    } catch (err) {
+      alert.set({ variant: "bg-danger", message: "Something went wrong, please try again" });
+      goto("/app");
+    }
+  }
+
+  export async function remove(endpoint) {
+    const url = baseURL + endpoint;
+    try {
+      const res = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          Authorization: `token ${user.token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      await res.json();
+      alert.set({ variant: "bg-primary", message: "Successfully deleted" });
+      goto("/app");
+    } catch (err) {
+      alert.set({ variant: "bg-danger", message: "Something went wrong, please try again" });
+      goto("/app");
+    }
+  }
 </script>

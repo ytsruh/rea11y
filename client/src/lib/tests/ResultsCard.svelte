@@ -21,6 +21,6 @@
         </div>
       </div>
     </div>
-    <div class="py-5 border-t border-midGrey"><Button block>View</Button></div>
+    <div class="py-5 border-t border-midGrey"><Button>View</Button></div>
   </div>
 </div>

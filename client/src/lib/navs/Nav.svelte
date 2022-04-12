@@ -1,15 +1,10 @@
 <script>
   import Logo from "../Logo.svelte";
-  import IoIosSunny from "svelte-icons/io/IoIosSunny.svelte";
-  import IoIosMoon from "svelte-icons/io/IoIosMoon.svelte";
   import IoIosMenu from "svelte-icons/io/IoIosMenu.svelte";
-  export let dark = false;
+  import DarkMode from "./DarkMode.svelte";
+
   export let menuOpen = false;
 
-  function toggleDarkMode() {
-    dark = !dark;
-    document.documentElement.classList.toggle("dark");
-  }
   function toggleMenu() {
     menuOpen = !menuOpen;
   }
@@ -35,13 +30,7 @@
           </li>
         {/each}
         <li class="mx-2">
-          <div class="icon p-1" on:click={() => toggleDarkMode()}>
-            {#if dark}
-              <IoIosMoon />
-            {:else}
-              <IoIosSunny />
-            {/if}
-          </div>
+          <DarkMode />
         </li>
         <li class="mx-2 md:hidden sm:flex">
           <div class="icon p-1" on:click={() => toggleMenu()}>

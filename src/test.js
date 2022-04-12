@@ -19,13 +19,36 @@ router.post("/", async (req, res) => {
   }
 });
 
-//Create all Tests for account
+//Find all Tests for account
 router.get("/", async (req, res) => {
   console.log(req.body);
   try {
     const data = await Test.find({
       account: req.user.account,
     }).populate("createdBy", ["name", "username"]);
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(500).json({ error: "Something went wrong", err });
+  }
+});
+
+//Find a Tests by ID for account
+router.get("/:id", async (req, res) => {
+  try {
+    const data = await Test.findOne({
+      account: req.user.account,
+      _id: req.params.id,
+    }).populate("createdBy", ["name", "username"]);
+    res.status(200).json(data);
+  } catch (err) {
+    res.status(500).json({ error: "Something went wrong", err });
+  }
+});
+
+//Delete a test
+router.delete("/:id", async (req, res) => {
+  try {
+    const data = await Test.findByIdAndDelete(req.params.id);
     res.status(200).json(data);
   } catch (err) {
     res.status(500).json({ error: "Something went wrong", err });

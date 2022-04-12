@@ -20,12 +20,13 @@
 
 <div>
   <CreateTest />
-  {#if data}
+  {#if data.length > 0}
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2 2xl:grid-cols-4 gap-4">
       {#each data as test}
         <ImgCard
           header={`Created by: ${test.createdBy.name ? test.createdBy.name : test.createdBy.username}`}
           title={test.title}
+          img={test.image}
           link={`/app/tests/${test._id}`}
           footer={`Last Tested : ${test.lastTested ? test.lastTested : `Not Tested Yet`}`}
         />
