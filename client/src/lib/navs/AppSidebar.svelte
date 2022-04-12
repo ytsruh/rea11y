@@ -15,6 +15,7 @@
     { name: "Settings", link: "/app/settings", icon: IoIosSettings },
     { name: "Logout", link: "/app/logout", icon: IoIosLogOut },
   ];
+  let showProjects = JSON.parse(localStorage.getItem("showProjects"));
 </script>
 
 <div
@@ -24,17 +25,33 @@
   <div class="w-full mx-0 lg:mx-3">
     <ul>
       {#each links as link}
-        <li class="w-full">
-          <a
-            href={link.link}
-            class="inline-flex my-1 p-3 hover:bg-primary hover:text-white w-full rounded-md"
-          >
-            <div class="icon px-1 inline-flex">
-              <svelte:component this={link.icon} />
-            </div>
-            <h5 class="inline-flex px-4 mt-2">{link.name}</h5>
-          </a>
-        </li>
+        {#if link.name === "Projects"}
+          {#if showProjects}
+            <li class="w-full">
+              <a
+                href={link.link}
+                class="inline-flex my-1 p-3 hover:bg-primary hover:text-white w-full rounded-md"
+              >
+                <div class="icon px-1 inline-flex">
+                  <svelte:component this={link.icon} />
+                </div>
+                <h5 class="inline-flex px-4 mt-2">{link.name}</h5>
+              </a>
+            </li>
+          {/if}
+        {:else}
+          <li class="w-full">
+            <a
+              href={link.link}
+              class="inline-flex my-1 p-3 hover:bg-primary hover:text-white w-full rounded-md"
+            >
+              <div class="icon px-1 inline-flex">
+                <svelte:component this={link.icon} />
+              </div>
+              <h5 class="inline-flex px-4 mt-2">{link.name}</h5>
+            </a>
+          </li>
+        {/if}
       {/each}
     </ul>
   </div>

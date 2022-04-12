@@ -30,7 +30,7 @@
 </script>
 
 <div class="my-3 px-2 bg-white dark:bg-coal rounded-md">
-  <h2 class="text-2xl text-coal dark:text-white p-3">Create new test</h2>
+  <h2 class="text-2xl text-coal dark:text-white p-3">Create New Test</h2>
   <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
     <div class="md:col-span-5 p-3">
       <div class="mb-3 w-full">

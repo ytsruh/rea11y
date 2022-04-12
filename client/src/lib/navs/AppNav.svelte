@@ -1,17 +1,11 @@
 <script>
   import Logo from "../Logo.svelte";
-  import IoIosSunny from "svelte-icons/io/IoIosSunny.svelte";
-  import IoIosMoon from "svelte-icons/io/IoIosMoon.svelte";
   import IoIosMenu from "svelte-icons/io/IoIosMenu.svelte";
   import CommandPallette from "$lib/components/CommandPalette.svelte";
   import AvatarDropdown from "./AvatarDropdown.svelte";
+  import DarkMode from "./DarkMode.svelte";
   export let toggle;
-  export let dark = false;
-
-  function toggleDarkMode() {
-    dark = !dark;
-    document.documentElement.classList.toggle("dark");
-  }
+  let showSearch = JSON.parse(localStorage.getItem("showSearch"));
 </script>
 
 <nav class="flex flex-row justify-between lg:px-10 px-5 py-3 bg-primary dark:bg-coal text-white">
@@ -26,17 +20,13 @@
   </div>
   <div>
     <ul class="flex">
+      {#if showSearch}
+        <li class="mx-2">
+          <CommandPallette />
+        </li>
+      {/if}
       <li class="mx-2">
-        <CommandPallette />
-      </li>
-      <li class="mx-2">
-        <div class="icon p-1" on:click={() => toggleDarkMode()}>
-          {#if dark}
-            <IoIosMoon />
-          {:else}
-            <IoIosSunny />
-          {/if}
-        </div>
+        <DarkMode />
       </li>
       <li class="mx-2">
         <AvatarDropdown />

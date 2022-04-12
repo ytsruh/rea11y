@@ -53,6 +53,7 @@ router.post("/login", async (req, res) => {
         name: user.name,
         username: user.username,
         account: user.account,
+        profilePicture: user.profilePicture,
       };
       res.status(200).json({ token, expiry, userData });
     } else {

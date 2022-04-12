@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { User, Account } = require("../db");
 const { passport } = require("../lib/passport");
+const uploadToAzure = require("../lib/multer");
 
 //Get User & Account details
 router.get("/", async (req, res) => {
@@ -26,6 +27,22 @@ router.put("/", async (req, res) => {
     const user = await User.findByIdAndUpdate(req.user._id, { name: req.body.name });
     const account = await Account.findByIdAndUpdate(req.user.account, { name: req.body.accountName });
     res.status(200).json({ message: "Success" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "An Error Occured" });
+  }
+});
+
+//Update User profile picture/avatar
+router.post("/profile", uploadToAzure.single("imgFile"), async (req, res) => {
+  try {
+    if (req.file) {
+      const profilePicture = `/${req.file.container}/${req.file.blob}`;
+      const user = await User.findByIdAndUpdate(req.user._id, { profilePicture });
+      res.status(200).json({ message: "Success" });
+    } else {
+      res.status(500).json({ error: "An Error Occured" });
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "An Error Occured" });

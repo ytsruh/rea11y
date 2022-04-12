@@ -22,6 +22,9 @@ const UserSchema = new mongoose.Schema(
       required: true,
       ref: "Account",
     },
+    profilePicture: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
