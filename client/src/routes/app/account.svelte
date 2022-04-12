@@ -2,7 +2,6 @@
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
   import { get, put } from "$lib/api.svelte";
-  import PageHeader from "$lib/PageHeader.svelte";
   import Loading from "$lib/Loading.svelte";
   import Button from "$lib/components/Button.svelte";
   let loading = true;
@@ -39,7 +38,6 @@
   {#if loading}
     <Loading />
   {:else}
-    <PageHeader>Account & Profile</PageHeader>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-5">
       <div class="bg-white dark:bg-coal px-10 py-5">
         <h2 class="text-center text-2xl py-5">Update details</h2>
@@ -86,8 +84,8 @@
               />
             </div>
           </div>
-          <div class="flex">
-            <button type="submit" class="inline-block px-6 py-2.5 bg-primary text-white"> Update </button>
+          <div class="py-3">
+            <Button class="bg-primary text-white" on:click={handleSubmit}>Update</Button>
           </div>
         </form>
       </div>
@@ -99,7 +97,7 @@
             alt="Avatar"
           />
           <div class="py-5">
-            <Button class="bg-primary text-white ">Update Avatar</Button>
+            <Button class="bg-primary text-white">Update Avatar</Button>
           </div>
         </div>
       </div>

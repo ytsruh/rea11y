@@ -1,5 +1,1 @@
-<script>
-  import PageHeader from "$lib/PageHeader.svelte";
-</script>
-
-<PageHeader>Dashboard</PageHeader>
+<h1>Dashboard</h1>

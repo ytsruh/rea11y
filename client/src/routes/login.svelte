@@ -68,7 +68,7 @@
         <Loading />
       </div>
     {:else}
-      <div class="w-100 md:w-1/2 py-5 bg-primary dark:bg-coal">
+      <div class="w-100 md:w-1/2 py-5 bg-primary dark:bg-coal rounded-md">
         <h1 class="text-center py-5 text-5xl text-white dark:text-primary">Login</h1>
         <form on:submit|preventDefault={handleOnSubmit}>
           <div class="flex justify-center p-3">
