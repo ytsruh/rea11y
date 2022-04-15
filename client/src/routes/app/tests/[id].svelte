@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { page } from "$app/stores";
-  import { get, put, remove, upload } from "$lib/api.svelte";
+  import { get, put, remove, upload, runtest } from "$lib/api.svelte";
   import Button from "$lib/components/Button.svelte";
   import Loading from "$lib/Loading.svelte";
   import Modal from "$lib/components/Modal.svelte";
@@ -19,6 +19,7 @@
       const response = await get(`/test/${id}`);
       data = response;
       loading = false;
+      console.log(data);
     } catch (err) {
       goto("/app");
     }
@@ -37,7 +38,13 @@
     }
   }
 
+  function startTest() {
+    loading = true;
+    runtest(`/test/${id}/run`);
+  }
+
   function handleUpdate() {
+    loading = true;
     put(`/test/${id}`, data);
   }
 
@@ -99,7 +106,7 @@
 
   <div class="py-2 sm:my-5 grid grid-cols-1 sm:grid-cols-3 gap-4">
     <Button class="bg-coal text-white" link="/app/tests">Back to Tests</Button>
-    <Button>Run Test Now</Button>
+    <Button on:click={startTest}>Run Test Now</Button>
     <Modal
       buttonText="Delete"
       submitText="Delete?"

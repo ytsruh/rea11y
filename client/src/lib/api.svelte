@@ -99,4 +99,22 @@
       goto("/app");
     }
   }
+
+  export async function runtest(endpoint) {
+    const url = baseURL + endpoint;
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          Authorization: `token ${user.token}`,
+        },
+      });
+      await res.json();
+      alert.set({ variant: "bg-primary", message: "Test has started. Please check back later for results." });
+      goto("/app");
+    } catch (err) {
+      alert.set({ variant: "bg-danger", message: "Something went wrong, please try again" });
+      goto("/app");
+    }
+  }
 </script>

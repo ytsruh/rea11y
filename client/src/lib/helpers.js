@@ -1,3 +1,4 @@
+import * as dayjs from "dayjs";
 export const functions = {
   validURL: (str) => {
     var pattern = new RegExp(
@@ -11,4 +12,5 @@ export const functions = {
     ); // fragment locator
     return !!pattern.test(str);
   },
+  dayjs: dayjs,
 };

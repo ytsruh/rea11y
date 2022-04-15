@@ -5,6 +5,7 @@
   import CreateTest from "$lib/tests/CreateTest.svelte";
   import Loading from "$lib/Loading.svelte";
   import ImgCard from "$lib/components/ImgCard.svelte";
+  import { functions } from "$lib/helpers.js";
   let loading = true;
   const baseURL = import.meta.env.VITE_AZURE_STORAGE_URL;
   let data = [];
@@ -29,7 +30,9 @@
           title={test.title}
           img={test.image ? baseURL + test.image : "https://via.placeholder.com/150?text=Placeholder"}
           link={`/app/tests/${test._id}`}
-          footer={`Last Tested : ${test.lastTested ? test.lastTested : `Not Tested Yet`}`}
+          footer={`Last Tested : ${
+            test.lastTested ? functions.dayjs(test.lastTested).format("D MMM YY") : `Not Tested Yet`
+          }`}
         />
       {/each}
     </div>
