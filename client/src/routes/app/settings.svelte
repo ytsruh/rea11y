@@ -6,13 +6,9 @@
   import Button from "$lib/components/Button.svelte";
   import { theme } from "$lib/stores/theme";
   let loading;
-  let showProjects;
-  let showFavourites;
   let showSearch;
   let darkMode = $theme;
   async function handleSubmit() {
-    localStorage.setItem("showProjects", showProjects);
-    localStorage.setItem("showFavourites", showFavourites);
     localStorage.setItem("showSearch", showSearch);
     theme.set(darkMode);
     goto("/app");
@@ -23,8 +19,6 @@
   }
 
   onMount(async () => {
-    showProjects = JSON.parse(localStorage.getItem("showProjects")) || false;
-    showFavourites = JSON.parse(localStorage.getItem("showFavourites")) || false;
     showSearch = JSON.parse(localStorage.getItem("showSearch")) || false;
   });
 </script>
@@ -37,25 +31,6 @@
       <div class="bg-white dark:bg-coal px-10 py-5 w-full md:w-9/12">
         <h2 class="text-center text-2xl py-5">Settings</h2>
         <form class="py-5" on:submit|preventDefault={handleSubmit}>
-          <div class="flex justify-between py-3">
-            <div class="text-coal dark:text-white text-lg">Show Projects</div>
-            <div
-              class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in"
-            >
-              <input
-                type="checkbox"
-                bind:checked={showProjects}
-                name="projects"
-                id="projects"
-                class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white checked:bg-primary checked:right-0
-                border-4 border-lightGrey appearance-none cursor-pointer"
-              />
-              <label
-                for="projects"
-                class="toggle-label block overflow-hidden h-6 rounded-full bg-midGrey cursor-pointer"
-              />
-            </div>
-          </div>
           <div class="flex justify-between py-3">
             <div class="text-coal dark:text-white text-lg">Show Search / Command Palette</div>
             <div
@@ -71,25 +46,6 @@
               />
               <label
                 for="search"
-                class="toggle-label block overflow-hidden h-6 rounded-full bg-midGrey cursor-pointer"
-              />
-            </div>
-          </div>
-          <div class="flex justify-between py-3">
-            <div class="text-coal dark:text-white text-lg">Show Favourites on Dashboard</div>
-            <div
-              class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in"
-            >
-              <input
-                type="checkbox"
-                bind:checked={showFavourites}
-                name="favourites"
-                id="favourites"
-                class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white checked:bg-primary checked:right-0
-                border-4 border-lightGrey appearance-none cursor-pointer"
-              />
-              <label
-                for="favourites"
                 class="toggle-label block overflow-hidden h-6 rounded-full bg-midGrey cursor-pointer"
               />
             </div>
