@@ -28,6 +28,12 @@ const TestSchema = new mongoose.Schema(
       ref: "User",
     },
     lastTested: { type: Date },
+    reports: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Report",
+      },
+    ],
   },
   { timestamps: true }
 );
