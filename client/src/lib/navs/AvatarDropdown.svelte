@@ -12,15 +12,13 @@
     { name: "Settings", link: "/app/settings" },
     { name: "Logout", link: "/app/logout" },
   ];
+  const baseURL = import.meta.env.VITE_AZURE_STORAGE_URL;
+  let profilePicture = JSON.parse(sessionStorage.getItem("user")).userData.profilePicture;
 </script>
 
 <div class="flex justify-center">
   <div on:click={toggle} use:clickOutside on:click_outside={close}>
-    <img
-      class="inline object-cover w-8 h-8 mr-2 rounded-full"
-      src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-      alt="Profile"
-    />
+    <img class="inline object-cover w-8 h-8 mr-2 rounded-full" src={baseURL + profilePicture} alt="Profile" />
   </div>
 
   {#if show}

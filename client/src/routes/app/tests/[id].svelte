@@ -1,19 +1,19 @@
 <script>
   import { onMount } from "svelte";
   import { page } from "$app/stores";
-  import { get, remove } from "$lib/api.svelte";
-  import { alert } from "$lib/stores/alert";
+  import { get, put, remove, upload } from "$lib/api.svelte";
   import Button from "$lib/components/Button.svelte";
   import Loading from "$lib/Loading.svelte";
   import Modal from "$lib/components/Modal.svelte";
   import Tabs from "$lib/components/Tabs.svelte";
   import TabResults from "$lib/tests/TabResults.svelte";
   import TabNotes from "$lib/tests/TabNotes.svelte";
-
   const id = $page.params.id;
-
   let loading = true;
   let data = {};
+  let inputField;
+  let imgFile;
+  const baseURL = import.meta.env.VITE_AZURE_STORAGE_URL;
   onMount(async () => {
     try {
       const response = await get(`/test/${id}`);
@@ -24,11 +24,25 @@
     }
   });
 
+  function uploadImage() {
+    try {
+      if (imgFile && imgFile[0]) {
+        loading = true;
+        const formData = new FormData();
+        formData.append("imgFile", imgFile[0]);
+        upload(`/test/${id}/image`, formData);
+      }
+    } catch (err) {
+      goto("/app");
+    }
+  }
+
   function handleUpdate() {
-    console.log(data);
+    put(`/test/${id}`, data);
   }
 
   function handleDelete() {
+    loading = true;
     remove(`/test/${id}`);
   }
 
@@ -37,8 +51,6 @@
     { label: "Results", value: 1, component: TabResults },
     { label: "Notes", value: 2, component: TabNotes },
   ];
-
-  console.log(data);
 </script>
 
 {#if loading}
@@ -59,13 +71,29 @@
           Created by: <span class="text-sm">{data.createdBy.name}</span>
         </h5>
         <div class="flex justify-center py-5">
-          <Button class="border-2 border-midGrey text-midGrey mx-2">Change Image</Button>
+          <Button
+            class="border-2 border-midGrey text-midGrey mx-2"
+            on:click={() => {
+              inputField.click();
+            }}>Change Image</Button
+          >
+          <input
+            style="display:none"
+            type="file"
+            bind:this={inputField}
+            bind:files={imgFile}
+            on:change={uploadImage}
+          />
           <Button on:click={handleUpdate} class="mx-2 bg-primary text-white">Update</Button>
         </div>
       </div>
     </div>
     <div class="flex flex-wrap justify-center order-first md:order-2">
-      <img src="https://via.placeholder.com/150" class="h-48 md:h-64 w-full md:max-w-sm" alt="" />
+      <img
+        src={data.image ? baseURL + data.image : "https://via.placeholder.com/150"}
+        class="h-48 md:h-64 w-full md:max-w-sm"
+        alt=""
+      />
     </div>
   </div>
 
@@ -87,3 +115,9 @@
     <Tabs {items} />
   </div>
 {/if}
+
+<style>
+  input[type="file"] {
+    display: none;
+  }
+</style>

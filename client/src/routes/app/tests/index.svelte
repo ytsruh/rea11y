@@ -6,6 +6,7 @@
   import Loading from "$lib/Loading.svelte";
   import ImgCard from "$lib/components/ImgCard.svelte";
   let loading = true;
+  const baseURL = import.meta.env.VITE_AZURE_STORAGE_URL;
   let data = [];
   onMount(async () => {
     try {
@@ -26,7 +27,7 @@
         <ImgCard
           header={`Created by: ${test.createdBy.name ? test.createdBy.name : test.createdBy.username}`}
           title={test.title}
-          img={test.image}
+          img={test.image ? baseURL + test.image : "https://via.placeholder.com/150?text=Placeholder"}
           link={`/app/tests/${test._id}`}
           footer={`Last Tested : ${test.lastTested ? test.lastTested : `Not Tested Yet`}`}
         />
