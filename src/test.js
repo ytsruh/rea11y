@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Test } = require("../db");
 const { passport } = require("../lib/passport");
+const { uploadToAzureTests } = require("../lib/multer");
 
 //Create new Test
 router.post("/", async (req, res) => {
@@ -16,6 +17,33 @@ router.post("/", async (req, res) => {
     res.status(200).json({ message: "Test created successfully", data: test });
   } catch (err) {
     res.status(500).json({ error: "Something went wrong", err });
+  }
+});
+
+//Update Test image
+router.post("/:id/image", uploadToAzureTests.single("imgFile"), async (req, res) => {
+  try {
+    if (req.file) {
+      const imageLocation = `/${req.file.container}/${req.file.blob}`;
+      const user = await Test.findByIdAndUpdate(req.params.id, { image: imageLocation });
+      res.status(200).json({ message: "Success" });
+    } else {
+      res.status(500).json({ error: "An Error Occured" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "An Error Occured" });
+  }
+});
+
+//Update Test by ID
+router.put("/:id", async (req, res) => {
+  try {
+    const test = await Test.findByIdAndUpdate(req.params.id, { title: req.body.title });
+    res.status(200).json({ message: "Success" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: "An Error Occured" });
   }
 });
 

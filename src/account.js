@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { User, Account } = require("../db");
 const { passport } = require("../lib/passport");
-const uploadToAzure = require("../lib/multer");
+const { uploadToAzureUsers } = require("../lib/multer");
 
 //Get User & Account details
 router.get("/", async (req, res) => {
@@ -34,7 +34,7 @@ router.put("/", async (req, res) => {
 });
 
 //Update User profile picture/avatar
-router.post("/profile", uploadToAzure.single("imgFile"), async (req, res) => {
+router.post("/profile", uploadToAzureUsers.single("imgFile"), async (req, res) => {
   try {
     if (req.file) {
       const profilePicture = `/${req.file.container}/${req.file.blob}`;

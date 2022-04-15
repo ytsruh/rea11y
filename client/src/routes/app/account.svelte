@@ -9,6 +9,8 @@
   let name = "";
   let userName = "";
   let imgFile;
+  const baseURL = import.meta.env.VITE_AZURE_STORAGE_URL;
+  let profilePicture = JSON.parse(sessionStorage.getItem("user")).userData.profilePicture;
 
   async function handleSubmit() {
     try {
@@ -31,7 +33,7 @@
         upload("/account/profile", formData);
       }
     } catch (err) {
-      console.log(err);
+      goto("/app");
     }
   }
 
@@ -106,15 +108,11 @@
       <div class="bg-white dark:bg-coal px-10 py-5 text-center grid">
         <div class="upload-btn-wrapper self-center">
           <div class="py-3">
-            <img
-              src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-              class="rounded-full w-32 h-32 mb-4 mx-auto"
-              alt="Avatar"
-            />
+            <img src={baseURL + profilePicture} class="rounded-full w-32 h-32 mb-4 mx-auto" alt="Avatar" />
             <input type="file" name="imageFile" bind:files={imgFile} />
           </div>
           {#if imgFile}
-            awaiting upload
+            Please click upload to complete
           {/if}
           <div class="py-3">
             <Button on:click={uploadImage}>Upload image</Button>
