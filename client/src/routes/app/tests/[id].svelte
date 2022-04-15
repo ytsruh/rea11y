@@ -4,7 +4,6 @@
   import { get, remove } from "$lib/api.svelte";
   import { alert } from "$lib/stores/alert";
   import Button from "$lib/components/Button.svelte";
-  import Chip from "$lib/components/Chip.svelte";
   import Loading from "$lib/Loading.svelte";
   import Modal from "$lib/components/Modal.svelte";
   import Tabs from "$lib/components/Tabs.svelte";
@@ -63,9 +62,6 @@
           <Button class="border-2 border-midGrey text-midGrey mx-2">Change Image</Button>
           <Button on:click={handleUpdate} class="mx-2 bg-primary text-white">Update</Button>
         </div>
-        <div class="flex justify-center py-3">
-          <Chip>Project Name</Chip>
-        </div>
       </div>
     </div>
     <div class="flex flex-wrap justify-center order-first md:order-2">
@@ -73,10 +69,9 @@
     </div>
   </div>
 
-  <div class="py-2 sm:my-5 grid grid-cols-1 sm:grid-cols-4 gap-4">
+  <div class="py-2 sm:my-5 grid grid-cols-1 sm:grid-cols-3 gap-4">
     <Button class="bg-coal text-white" link="/app/tests">Back to Tests</Button>
     <Button>Run Test Now</Button>
-    <Modal buttonText="Add to Project" modalTitle="Add to Project" class="bg-warning text-white" />
     <Modal
       buttonText="Delete"
       submitText="Delete?"
