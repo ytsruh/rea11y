@@ -16,9 +16,11 @@ const account = require("./account");
 router.use("/account", account);
 const tests = require("./test");
 router.use("/test", tests);
+const report = require("./report");
+router.use("/report", report);
 router.get("/", (req, res) => {
   res.json({
-    message: "Welcome Rea11y",
+    message: "Welcome to Rea11y",
     version: process.env.APP_VERSION,
   });
 });

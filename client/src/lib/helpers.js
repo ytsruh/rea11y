@@ -12,5 +12,11 @@ export const functions = {
     ); // fragment locator
     return !!pattern.test(str);
   },
+  wcagCodeFormatter: (str) => {
+    const step1 = str.replaceAll(".", " ");
+    const step2 = step1.replaceAll("_", ".");
+    const step3 = step2.replaceAll(",", " & ");
+    return step3;
+  },
   dayjs: dayjs,
 };
