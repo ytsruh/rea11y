@@ -1,13 +1,12 @@
 <script>
   import { onMount } from "svelte";
   import { page } from "$app/stores";
+  import { goto } from "$app/navigation";
   import { get, put, remove, upload, runtest } from "$lib/api.svelte";
   import Button from "$lib/components/Button.svelte";
   import Loading from "$lib/Loading.svelte";
   import Modal from "$lib/components/Modal.svelte";
-  import Tabs from "$lib/components/Tabs.svelte";
-  import TabResults from "$lib/tests/TabResults.svelte";
-  import TabNotes from "$lib/tests/TabNotes.svelte";
+  import TestTabs from "$lib/tests/TestTabs.svelte";
   const id = $page.params.id;
   let loading = true;
   let data = {};
@@ -19,7 +18,6 @@
       const response = await get(`/test/${id}`);
       data = response;
       loading = false;
-      console.log(data);
     } catch (err) {
       goto("/app");
     }
@@ -52,12 +50,6 @@
     loading = true;
     remove(`/test/${id}`);
   }
-
-  // List of tab items with labels, values and assigned components
-  let items = [
-    { label: "Results", value: 1, component: TabResults },
-    { label: "Notes", value: 2, component: TabNotes },
-  ];
 </script>
 
 {#if loading}
@@ -65,14 +57,12 @@
 {:else}
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="flex justify-center items-center h-full">
-      <div class="text-center text-coal px-6 md:px-12">
-        <div>
-          <input
-            type="text"
-            class="bg-transparent text-5xl text-center font-bold focus:outline-none dark:text-white"
-            bind:value={data.title}
-          />
-        </div>
+      <div class="text-center text-coal px-6 md:px-12 w-full">
+        <textarea
+          rows="1"
+          class="resize-y bg-transparent text-4xl text-center font-bold w-full focus:outline-none dark:text-white"
+          bind:value={data.title}
+        />
         <h2 class="text-xl py-3 dark:text-white">{data.url}</h2>
         <h5 class="text-md py-3 dark:text-white">
           Created by: <span class="text-sm">{data.createdBy.name}</span>
@@ -119,7 +109,7 @@
   </div>
   <hr class="border-coal" />
   <div class="py-5">
-    <Tabs {items} />
+    <TestTabs results={data.reports} />
   </div>
 {/if}
 
