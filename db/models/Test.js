@@ -27,7 +27,10 @@ const TestSchema = new mongoose.Schema(
       required: true,
       ref: "User",
     },
-    lastTested: { type: Date },
+    lastTested: {
+      type: Date,
+      index: true, //Must add index=true for Cosmos DB to allow sorting. Without an Index Cosmos will not sort
+    },
     reports: [
       {
         type: mongoose.Schema.Types.ObjectId,
