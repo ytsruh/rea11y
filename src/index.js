@@ -12,6 +12,8 @@ if (process.env.AUTH !== "false") {
 }
 
 //Import and use authenticated routes
+const dashboard = require("./dashboard");
+router.use("/dashboard", dashboard);
 const account = require("./account");
 router.use("/account", account);
 const tests = require("./test");
