@@ -34,7 +34,7 @@ router.post("/create", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     //find user & validate password
-    const user = await User.findOne({ email: req.body.username });
+    const user = await User.findOne({ username: req.body.username });
     const match = await bcrypt.compare(req.body.password, user.password);
     //Send response based on result
     if (match) {

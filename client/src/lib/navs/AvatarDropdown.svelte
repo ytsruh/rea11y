@@ -18,7 +18,11 @@
 
 <div class="flex justify-center">
   <div on:click={toggle} use:clickOutside on:click_outside={close}>
-    <img class="inline object-cover w-8 h-8 mr-2 rounded-full" src={baseURL + profilePicture} alt="Profile" />
+    <img
+      class="inline object-cover w-8 h-8 mr-2 rounded-full"
+      src={profilePicture ? baseURL + profilePicture : baseURL + "/users/placeholder-image.png"}
+      alt="Profile"
+    />
   </div>
 
   {#if show}
