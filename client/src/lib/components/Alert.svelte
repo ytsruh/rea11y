@@ -13,7 +13,13 @@
       visible = false;
     } else {
       visible = true; // show alert
-      if (ms > 0) timeout = setTimeout(() => (visible = false), ms); // and hide it after ms milliseconds
+      // Hide it after ms milliseconds & set alert back to null to stop reappearing
+      if (ms > 0) {
+        timeout = setTimeout(() => {
+          visible = false;
+          alert.set(null);
+        }, ms);
+      }
     }
   };
   $: onMessageChange($alert, ms); // whenever the alert store or the ms props changes run onMessageChange

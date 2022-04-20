@@ -108,7 +108,11 @@
       <div class="bg-white dark:bg-coal px-10 py-5 text-center grid">
         <div class="upload-btn-wrapper self-center">
           <div class="py-3">
-            <img src={baseURL + profilePicture} class="rounded-full w-32 h-32 mb-4 mx-auto" alt="Avatar" />
+            <img
+              src={profilePicture ? baseURL + profilePicture : baseURL + "/users/placeholder-image.png"}
+              class="rounded-full w-32 h-32 mb-4 mx-auto"
+              alt="Avatar"
+            />
             <input type="file" name="imageFile" bind:files={imgFile} />
           </div>
           {#if imgFile}

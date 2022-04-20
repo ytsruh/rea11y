@@ -34,7 +34,6 @@
       submitting = false;
       const data = await response.json();
       $user = data;
-      //sessionStorage.setItem("user", JSON.stringify(data));
       goto("/app");
     } catch (err) {
       submitting = false;

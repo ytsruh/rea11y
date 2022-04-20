@@ -9,7 +9,6 @@ const { uploadToAzureTests } = require("../lib/multer");
 
 //Create new Test
 router.post("/", async (req, res) => {
-  console.log(req.body);
   try {
     const test = await Test.create({
       title: req.body.title,
@@ -105,7 +104,6 @@ router.put("/:id", async (req, res) => {
 
 //Find all Tests for account
 router.get("/", async (req, res) => {
-  console.log(req.body);
   try {
     const data = await Test.find({
       account: req.user.account,

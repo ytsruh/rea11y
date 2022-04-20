@@ -42,7 +42,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     {#if data.latestTests}
       <div class="bg-white dark:bg-coal dark:text-white my-5 p-2 rounded-md text-center text-xl">
-        {#if data.latestTests}
+        {#if data.latestTests && data.latestTests.length > 0}
           <h5>5 Most Recent Tests</h5>
           <div class="flex flex-col">
             <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
