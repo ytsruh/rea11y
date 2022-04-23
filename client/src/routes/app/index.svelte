@@ -29,7 +29,7 @@
     </div>
     <div class="order-1 md:order-2 text-center">
       <a href="/app/tests">
-        <div class="bg-primary text-white w-full p-2 my-2 rounded-md">Run a Test</div>
+        <div class="bg-primary text-white w-full p-2 my-2 rounded-md">Create / View Tests</div>
       </a>
       <a href="/app/account">
         <div class="bg-warning text-white w-full p-2 my-2 rounded-md">Account</div>
@@ -54,7 +54,7 @@
                         <tr class="border-y">
                           <td class="px-6 py-4 text-sm">{test.title}</td>
                           <td class="px-6 py-4">
-                            <Button link={`/test/${test._id}`}>Go</Button>
+                            <Button link={`/app/tests/${test._id}`}>Go</Button>
                           </td>
                         </tr>
                       {/each}
