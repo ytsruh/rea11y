@@ -35,6 +35,10 @@ router.post("/login", async (req, res) => {
   try {
     //find user & validate password
     const user = await User.findOne({ username: req.body.username });
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    console.log(user);
+    console.log(hashedPassword);
     const match = await bcrypt.compare(req.body.password, user.password);
     //Send response based on result
     if (match) {
@@ -57,7 +61,7 @@ router.post("/login", async (req, res) => {
       };
       res.status(200).json({ token, expiry, userData });
     } else {
-      res.status(401).json({ error: "Unathorised: Wrong username or password" });
+      res.status(401).json({ error: "Unathorised: Wrong username or passwordsssss" });
     }
   } catch (err) {
     console.log(err);

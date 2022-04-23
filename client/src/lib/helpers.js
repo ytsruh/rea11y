@@ -1,4 +1,4 @@
-import * as dayjs from "dayjs";
+import moment from "moment";
 export const functions = {
   validURL: (str) => {
     var pattern = new RegExp(
@@ -18,5 +18,5 @@ export const functions = {
     const step3 = step2.replaceAll(",", " & ");
     return step3;
   },
-  dayjs: dayjs,
+  dayjs: moment,
 };
