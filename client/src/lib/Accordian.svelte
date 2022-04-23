@@ -2,20 +2,7 @@
   import { slide } from "svelte/transition";
   import IoIosArrowDropdownCircle from "svelte-icons/io/IoIosArrowDropdownCircle.svelte";
   import IoIosCheckmarkCircle from "svelte-icons/io/IoIosCheckmarkCircle.svelte";
-  export let sections = [
-    {
-      id: 1,
-      title: "Section 1",
-      content: "This is some test content",
-      active: true,
-    },
-    {
-      id: 2,
-      title: "Section 2",
-      content: "Welcome to section 2 test content",
-      active: false,
-    },
-  ];
+  export let sections = [];
 
   const expand = (section) => {
     sections = sections.map((s) => {

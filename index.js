@@ -5,6 +5,8 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
+const { passport, Local, JWT } = require("./lib/passport");
+const db = require("./db");
 
 //Config middleware
 app.use(morgan("dev"));
@@ -30,6 +32,11 @@ const limiter = rateLimit({
 //  Apply rate limit to all requests
 app.use(limiter);
 
+//Require & use Passport
+app.use(passport.initialize());
+passport.use("local", Local);
+passport.use("jwt", JWT);
+
 //Import & use routes
 const api = require("./src");
 app.use("/", api);
@@ -54,6 +61,12 @@ app.use((err, req, res, next) => {
 /*
     Start app
 */
-app.listen(process.env.PORT, () => {
-  console.log(`App listening at ${process.env.PORT} in ${process.env.NODE_ENV} environment`);
+app.listen(process.env.PORT, async () => {
+  try {
+    await db.connect();
+    console.log(`App listening at port ${process.env.PORT}`);
+  } catch (err) {
+    console.log(`Something went wrong:`);
+    console.log(err);
+  }
 });
